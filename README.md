@@ -29,6 +29,10 @@ To edit the websites contents edit the `index.html` file. It contains different 
 
 **IMPORTANT!** Make sure to replace the `favicon.ico` under `static/images/` with one of your own, otherwise your favicon is going to be a dreambooth image of me.
 
+## 中文说明 (Chinese Guide)
+
+See `README.zh-CN.md` for a concise Chinese walkthrough on what to edit, how to preview locally, and how to deploy with GitHub Pages.
+
 ## What's New
 
 - Modern, clean design with better mobile support

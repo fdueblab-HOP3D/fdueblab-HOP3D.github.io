@@ -242,6 +242,94 @@ body {
     border-radius: var(--border-radius-lg);
 }
 
+/* Figure captions */
+.has-text-centered.is-size-6.has-text-grey {
+  margin-top: 0.75rem;
+}
+
+/* Cleaner paper-website layout blocks */
+.figure-block {
+  margin: 0;
+  padding: 1.25rem;
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.figure-block img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius);
+}
+
+.figure-caption {
+  margin-top: 0.9rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Analysis layout tuned for different figure aspect ratios */
+.analysis-figure {
+  margin-bottom: 1.25rem;
+}
+
+.analysis-row {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* The entropy analysis figure is portrait; cap height so it doesn't dominate */
+.analysis-portrait img {
+  max-height: 560px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.results-table {
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.results-table table {
+  margin-bottom: 0;
+  min-width: 760px; /* horizontal (5-shot + 1-shot) layout needs more room */
+  font-size: 0.82rem;
+  line-height: 1.2;
+}
+
+.results-table thead th {
+  white-space: nowrap;
+  background: var(--background-accent);
+}
+
+.results-table td, .results-table th {
+  vertical-align: middle;
+  padding: 0.35rem 0.45rem;
+  white-space: nowrap;
+}
+
+/* Let the method column breathe a bit */
+.results-table td:first-child {
+  white-space: normal;
+  min-width: 120px;
+}
+
+@media screen and (max-width: 768px) {
+  .results-table table {
+    font-size: 0.75rem;
+    min-width: 720px;
+  }
+}
+
 .publication-body img {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-md);
@@ -412,10 +500,6 @@ code {
 
 .copy-bibtex-btn.copied {
   background: #10b981;
-}
-
-.copy-bibtex-btn.copied .copy-text::after {
-  content: "ied!";
 }
 
 /* Scroll to Top Button */

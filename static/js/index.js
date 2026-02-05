@@ -41,16 +41,17 @@ function copyBibTeX() {
     const bibtexElement = document.getElementById('bibtex-code');
     const button = document.querySelector('.copy-bibtex-btn');
     const copyText = button.querySelector('.copy-text');
+    const originalText = copyText ? copyText.textContent : 'Copy';
     
     if (bibtexElement) {
         navigator.clipboard.writeText(bibtexElement.textContent).then(function() {
             // Success feedback
             button.classList.add('copied');
-            copyText.textContent = 'Cop';
+            if (copyText) copyText.textContent = 'Copied!';
             
             setTimeout(function() {
                 button.classList.remove('copied');
-                copyText.textContent = 'Copy';
+                if (copyText) copyText.textContent = originalText;
             }, 2000);
         }).catch(function(err) {
             console.error('Failed to copy: ', err);
@@ -63,10 +64,10 @@ function copyBibTeX() {
             document.body.removeChild(textArea);
             
             button.classList.add('copied');
-            copyText.textContent = 'Cop';
+            if (copyText) copyText.textContent = 'Copied!';
             setTimeout(function() {
                 button.classList.remove('copied');
-                copyText.textContent = 'Copy';
+                if (copyText) copyText.textContent = originalText;
             }, 2000);
         });
     }
@@ -119,24 +120,27 @@ function setupVideoCarouselAutoplay() {
     });
 }
 
-$(document).ready(function() {
-    // Check for click events on the navbar burger icon
+document.addEventListener('DOMContentLoaded', function() {
+    // Carousel/slider are optional; initialize only if present.
+    try {
+        const options = {
+            slidesToScroll: 1,
+            slidesToShow: 1,
+            loop: true,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+        };
 
-    var options = {
-		slidesToScroll: 1,
-		slidesToShow: 1,
-		loop: true,
-		infinite: true,
-		autoplay: true,
-		autoplaySpeed: 5000,
+        if (window.bulmaCarousel && document.querySelector('.carousel')) {
+            window.bulmaCarousel.attach('.carousel', options);
+        }
+        if (window.bulmaSlider && document.querySelector('.slider')) {
+            window.bulmaSlider.attach();
+        }
+    } catch (e) {
+        // Safe no-op: page should work without these optional libs.
     }
 
-	// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-	
-    bulmaSlider.attach();
-    
-    // Setup video autoplay for carousel
     setupVideoCarouselAutoplay();
-
-})
+});
